@@ -23,8 +23,8 @@ public class ProjectController {
         return projectService.save(project);
     }
 
-    @Delete("/{id}")
-    public boolean deleteById(@PathVariable Integer id){
+    @PostMapping("/deleteProject")
+    public boolean deleteById(@RequestParam(value = "id") Integer id){
         return projectService.deleteById(id);
     }
 
@@ -43,7 +43,7 @@ public class ProjectController {
      * 分页
      * @param begin:起始页数
      * @param size:显示页数
-     * @return
+     *
      */
     @GetMapping("/{begin}/{size}")
     public PageInfo<Project> findAllByPages(@PathVariable("begin") int begin, @PathVariable("size") int size){

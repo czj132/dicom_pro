@@ -33,7 +33,6 @@ public class FileController {
     @Autowired
     private LogService logService;
 
-    private String DCM_IMAGES_ROOT_DIR = PathConfig.DCM_IMAGES_ROOT_DIR;
     private String LABEL_DIR = PathConfig.LABEL_DIR;
 
     private static String readFileToEnd(File file) throws IOException {
@@ -80,6 +79,7 @@ public class FileController {
         BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(file, false), StandardCharsets.UTF_8));
         bufferedWriter.write(json);
         bufferedWriter.close();
+
         Integer userId = expertId;
         String userName = expertService.queryExpertInfoById(userId).getName();
         String logType = "上传"+toolType+"标注";

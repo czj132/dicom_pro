@@ -5,8 +5,10 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import com.zjut.Dicom.mapper.PatientMapper;
 import com.zjut.Dicom.mapper.ProjectMapper;
+import com.zjut.Dicom.mapper.StudyMapper;
 import com.zjut.Dicom.pojo.Patient;
 import com.zjut.Dicom.pojo.Project;
+import com.zjut.Dicom.pojo.Study;
 import com.zjut.Dicom.pojo.VO.PatientStudyVO;
 import com.zjut.Dicom.service.ProjectService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,9 @@ public class ProjectServiceImpl implements ProjectService {
 
     @Autowired
     private PatientMapper patientMapper;
+
+    @Autowired
+    private StudyMapper studyMapper;
 
     @Override
     public boolean save(Project project) {
@@ -53,6 +58,10 @@ public class ProjectServiceImpl implements ProjectService {
         List<Project> projects = projectMapper.getAll();
         for (Project project: projects) {
             List<Patient> patients = patientMapper.getByProId(project.getId());
+            for (Patient patient : patients) {
+                List<Study> studyList = studyMapper.getByPatientId(patient.getId());
+                patient.setStudyList(studyList);
+            }
             project.setPatientList(patients);
         }
         return projects;

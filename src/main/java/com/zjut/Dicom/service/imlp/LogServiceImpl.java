@@ -13,12 +13,11 @@ import java.util.Date;
 @Service
 public class LogServiceImpl implements LogService {
 
+    private static final String logFormat = "%s在 %s 于ip: %s 进行%s";
+    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     @Autowired
     private LogMapper logMapper;
-
-    private static final String logFormat = "%s在 %s 于ip: %s 进行%s";
-    private static final SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
     // 类型  0-管理员  1-专家  2-医院  3-质控人员  4-报告人员
     @Override
