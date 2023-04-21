@@ -7,26 +7,26 @@ import java.util.Map;
 
 public interface HospitalUserService {
 
-    public boolean save(HospitalUser record);
+    boolean save(HospitalUser record);
 
-    public boolean deleteById(Integer id);
+    boolean deleteById(Integer id);
 
-    public boolean updateRecord(HospitalUser record);
+    boolean updateRecord(HospitalUser record);
 
-    public boolean updateSignature(Integer id, String signature);
+    boolean updateSignature(Integer id, String signature);
 
     /**
      * 修改密码
      * @param info:hospId,oldPassword,newPassword
      * @return
      */
-    public boolean updatePassword(Map<String,Object> info);
+    boolean updatePassword(Map<String,Object> info);
 
-    public HospitalUser getById(Integer id);
+    HospitalUser getById(Integer id);
 
-    public List<HospitalUser> getAll();
+    List<HospitalUser> getAll();
 
-    public HospitalUser getByAccount(String account);
+    HospitalUser getByAccount(String account);
 
-    public boolean update(HospitalUser record);
+    boolean update(HospitalUser record);
 }

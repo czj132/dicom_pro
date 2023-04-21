@@ -4,10 +4,13 @@ import com.github.pagehelper.PageInfo;
 import com.zjut.Dicom.pojo.Project;
 import com.zjut.Dicom.pojo.VO.PatientStudyVO;
 import com.zjut.Dicom.service.ProjectService;
+import com.zjut.Dicom.utils.responseResult.Result;
+import com.zjut.Dicom.utils.responseResult.ResultGenerator;
 import org.apache.ibatis.annotations.Delete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -19,8 +22,15 @@ public class ProjectController {
     private ProjectService projectService;
 
     @PostMapping
-    public boolean save(@RequestBody Project project){
-        return projectService.save(project);
+    public Result save(@RequestBody Project project){
+        int result = projectService.save(project);
+        if (result == 0){
+            //失败
+            return ResultGenerator.getFailResult("创建失败");
+        }else {
+            //成功
+            return ResultGenerator.getSuccessResult("创建成功");
+        }
     }
 
     @PostMapping("/deleteProject")
@@ -29,8 +39,13 @@ public class ProjectController {
     }
 
     @PutMapping
-    public boolean update(@RequestBody Project project){
-        return projectService.update(project);
+    public Result update(@RequestBody Project project){
+        int result = projectService.update(project);
+        if(result == 0){
+            return ResultGenerator.getFailResult("修改失败");
+        }else {
+            return ResultGenerator.getSuccessResult("修改成功");
+        }
     }
 
 

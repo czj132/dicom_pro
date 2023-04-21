@@ -55,16 +55,6 @@ public interface StudyMapper {
             "</set>" +
             " where id = #{id}" +
             "</script>")
-    @Results({
-            @Result(column="id", property="id"),
-            @Result(column="patient_id", property="patientId"),
-            @Result(column="project_id", property="projectId"),
-            @Result(column="viewpoint", property="viewpoint"),
-            @Result(column="status", property="status"),
-            @Result(column="upload_time", property="uploadTime"),
-            @Result(column="plan_time", property="planTime"),
-            @Result(column="view_time", property="viewTime"),
-    })
     int update(Study study);
 
     @Select("select * from study where id = #{id}")

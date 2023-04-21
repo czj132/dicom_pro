@@ -10,19 +10,11 @@ import java.util.List;
 public interface SeriesMapper {
 
     @Update({
-            "update series",
-            "setpatient_id = #{patientId},",
+            "update series set patient_id = #{patientId},",
             "viewpoint = #{viewpoint},",
             "study_id = #{studyId},",
             "upload_time = #{uploadTime} ",
             "where id = #{id}"
-    })
-    @Results({
-            @Result(column="id", property="id"),
-            @Result(column="patient_id", property="patientId"),
-            @Result(column="viewpoint", property="viewpoint"),
-            @Result(column="study_id", property="studyId"),
-            @Result(column="upload_time", property="uploadTime")
     })
     int update(Series series);
 

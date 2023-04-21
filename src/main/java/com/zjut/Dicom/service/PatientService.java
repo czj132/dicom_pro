@@ -6,16 +6,16 @@ import com.zjut.Dicom.pojo.VO.PatientStudyVO;
 import java.util.List;
 
 public interface PatientService {
-    public List<Patient> getByProId(Integer projectId);
+    List<Patient> getByProId(Integer projectId);
 
-    public boolean save(Patient patient);
+    boolean save(Patient patient);
 
-    public Patient getByIdAndProId(Integer id, Integer projectId);
+    //public Patient getByIdAndProId(Integer id, Integer projectId);
 
-    public boolean deleteById(Integer id);
+    boolean deleteById(Integer id);
 
-    public boolean update(Patient patient);
+    boolean update(Patient patient);
 
-    public Patient getByPatientId(Integer patientId);
+    Patient getByPatientId(Integer patientId);
 
 }

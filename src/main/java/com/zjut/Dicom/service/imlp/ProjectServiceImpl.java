@@ -31,11 +31,11 @@ public class ProjectServiceImpl implements ProjectService {
     private StudyMapper studyMapper;
 
     @Override
-    public boolean save(Project project) {
+    public int save(Project project) {
         project.setCreateTime(new Date());
         project.setLogicDeletion((byte)0);
         project.setStatus((byte)0);
-        return projectMapper.save(project) > 0;
+        return projectMapper.save(project);
     }
 
     @Override
@@ -44,8 +44,9 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public boolean update(Project project) {
-        return projectMapper.update(project) > 0;
+    public int update(Project project) {
+        project.setUpdateTime(new Date());
+        return projectMapper.update(project);
     }
 
     @Override

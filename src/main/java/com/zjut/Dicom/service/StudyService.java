@@ -16,7 +16,7 @@ public interface StudyService {
     * @param patientId
     * @return
     */
-   public boolean Quality(Integer patientId, List<Integer> viewpointList);
+   boolean Quality(Integer patientId, List<Integer> viewpointList);
 
    List<Study> getByPatientId(Integer patientId);
 
@@ -30,7 +30,7 @@ public interface StudyService {
    /**
     * 重新质控不合格文件
     * @param patientId
-    * @param viewpointList
+    * @param viewpoint
     * @return
     */
    boolean ReQuality(Integer patientId, Integer viewpoint);

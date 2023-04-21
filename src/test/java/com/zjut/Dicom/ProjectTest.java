@@ -45,7 +45,7 @@ public class ProjectTest {
         project.setDescription("项目还没建好");
         project.setViewTotal(5);
         project.setLogicDeletion((byte) 1);
-        boolean ret = projectService.save(project);
+        int ret = projectService.save(project);
         System.out.println(ret);
     }
 
@@ -57,7 +57,7 @@ public class ProjectTest {
         project.setMedicine("消化药");
         project.setDisease("肠胃病");
         project.setDescription("我的项目还没建好哈哈哈哈");
-        boolean ret = projectService.update(project);
+        int ret = projectService.update(project);
         System.out.println(ret);
     }
 

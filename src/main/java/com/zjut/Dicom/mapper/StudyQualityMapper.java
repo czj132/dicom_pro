@@ -2,7 +2,6 @@ package com.zjut.Dicom.mapper;
 
 import com.zjut.Dicom.pojo.StudyQuality;
 import org.apache.ibatis.annotations.*;
-import org.apache.ibatis.type.JdbcType;
 
 import java.util.List;
 

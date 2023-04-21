@@ -11,6 +11,7 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/patients")
 public class PatientController {
+
     @Autowired
     private PatientService patientService;
 
@@ -26,7 +27,7 @@ public class PatientController {
 
     /**
      * 添加患者
-     * @param patient
+     * @param patient 
      * @return
      */
     @PostMapping
@@ -34,10 +35,12 @@ public class PatientController {
         return patientService.save(patient);
     }
 
-    @DeleteMapping("/{id}")
-    public boolean deleteById(@PathVariable Integer id){
+
+    @PostMapping("/delete")
+    public boolean deleteById(@RequestParam(value = "id") Integer id){
         return patientService.deleteById(id);
     }
+
 
     @PutMapping
     public boolean update(@RequestBody Patient patient){

@@ -6,11 +6,11 @@ import java.util.List;
 import java.util.Map;
 
 public interface QualityUserService {
-    public List<QualityUser> getAll();
+    List<QualityUser> getAll();
 
-    public QualityUser getById(Integer id);
+    QualityUser getById(Integer id);
 
-    public boolean updatePwd(Map<String, Object> info);
+    boolean updatePwd(Map<String, Object> info);
 
-    public boolean updateRecord(QualityUser record);
+    boolean updateRecord(QualityUser record);
 }

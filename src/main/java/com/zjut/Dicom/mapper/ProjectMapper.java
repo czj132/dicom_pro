@@ -53,6 +53,7 @@ public interface ProjectMapper {
             "   <if test='description != null'>" +
             "       description = #{description}," +
             "   </if>" +
+            "update_time = #{updateTime}" +
             "</set>" +
             "where id = #{id}" +
             "</script>")

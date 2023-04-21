@@ -1,9 +1,7 @@
 package com.zjut.Dicom.mapper;
 
 import com.zjut.Dicom.pojo.Patient;
-import com.zjut.Dicom.pojo.Project;
 import com.zjut.Dicom.pojo.VO.PatientExpVO;
-import com.zjut.Dicom.pojo.VO.PatientStudyVO;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -72,10 +70,8 @@ public interface PatientMapper {
     @Delete("delete from patient where id = #{id}")
     int deleteById(Integer id);
 
-    @Update("update patient set sex = #{sex},age = #{age},clinical_history = #{clinicalHistory}, " +
-            "part = #{part}, examination_type = #{examination_type},create_time = #{createTime},"  +
-            "project_id = #{projectId},hospital_source = #{hospitalSource},comment =#{comment}" +
-            "where id = #{id}")
+    @Update("update patient set sex = #{sex}, age = #{age}, clinical_history = #{clinicalHistory}, part = #{part}, examination_type = " +
+            "#{examinationType}, project_id = #{projectId}, hospital_source = #{hospitalSource}, comment = #{comment} where id = #{id}")
     int update(Patient patient);
 
     @Select("select * from patient where id = #{patientId}")

@@ -4,12 +4,10 @@ import com.zjut.Dicom.mapper.PatientMapper;
 import com.zjut.Dicom.mapper.StudyMapper;
 import com.zjut.Dicom.pojo.Patient;
 import com.zjut.Dicom.pojo.Study;
-import com.zjut.Dicom.pojo.VO.PatientStudyVO;
 import com.zjut.Dicom.service.PatientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -28,9 +26,7 @@ public class PatientServiceImpl implements PatientService {
     @Override
     public boolean save(Patient patient) {
         //获取创建的StudyList
-        List<Study> studyList = new ArrayList<>();
-        studyList = patient.getStudyList();
-
+        List<Study> studyList = patient.getStudyList();
         //新建患者
         patient.setCreateTime(new Date());
         int ret1 = patientMapper.save(patient);
@@ -45,11 +41,6 @@ public class PatientServiceImpl implements PatientService {
             ret2 = studyMapper.save(study);
         }
         return (ret1 + ret2) > 0 ;
-    }
-
-    @Override
-    public Patient getByIdAndProId(Integer id, Integer projectId) {
-        return patientMapper.getByIdAndProId(id, projectId);
     }
 
     @Override
@@ -69,5 +60,4 @@ public class PatientServiceImpl implements PatientService {
         patient.setStudyList(studies);
         return patient;
     }
-
 }
