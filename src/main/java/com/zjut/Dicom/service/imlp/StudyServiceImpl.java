@@ -58,6 +58,7 @@ public class StudyServiceImpl implements StudyService {
                     studyQuality.setStudyId(study.getId());
                     studyQuality.setProjectId(study.getProjectId());
                     studyQuality.setStatus((byte)0);
+                    studyQuality.setId(study.getId());
                     ret = studyQualityMapper.save(studyQuality);
                 }
             }
@@ -98,8 +99,6 @@ public class StudyServiceImpl implements StudyService {
                     }
                 }
             }
-
-
         }
 
         return ret > 0;
@@ -128,8 +127,8 @@ public class StudyServiceImpl implements StudyService {
         if(studyQuality.getIsPass() == 1){
             //合格则进入下一环节，初评专家评估
             Integer studyId = studyQuality.getStudyId();
-            Integer projectId = studyQuality.getProjectId();
             Study tempStudy = studyMapper.getById(studyId);
+            Integer projectId = tempStudy.getProjectId();
             Integer patientId = tempStudy.getPatientId();
             List<ProjectExpert> projectExpertList = projectExpertMapper.queryFirstSecondExperts(projectId);
             for(ProjectExpert projectExpert : projectExpertList){
@@ -162,5 +161,4 @@ public class StudyServiceImpl implements StudyService {
         PageInfo<StudyQualityVO> pageInfo = new PageInfo<>(finalStudyQualityList);
         return pageInfo;
     }
-
 }

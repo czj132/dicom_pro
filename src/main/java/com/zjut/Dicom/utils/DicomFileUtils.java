@@ -35,7 +35,6 @@ public class DicomFileUtils {
             while ((line = reader.readLine()) != null) {
                 result.add(line);
             }
-            System.out.println(result);
             reader.close();
             int code = process.waitFor();
             if (code != 0) {

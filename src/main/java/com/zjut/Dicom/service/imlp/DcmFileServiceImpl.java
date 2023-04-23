@@ -150,7 +150,6 @@ public class DcmFileServiceImpl implements DcmFileService {
         // 1. 更新上传时间
         Study study = studyMapper.getById(dcmFileReTrans.getStudyId());
         study.setUploadTime(new Date());
-        study.setStatus((byte)1);
         studyMapper.update(study);
 
         //2.删除旧的记录，根据studyId删除

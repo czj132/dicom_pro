@@ -54,8 +54,24 @@ public interface ExpertEvaluationMapper {
 
     @Insert("insert into expert_evaluation(project_id, patient_id, study_id, expert_id, expert_type," +
             "evaluate_time, status, valid_status, target_focus, non_target_focus, new_focus, supplementary, report)" +
-            "values (#{projectId}, #{patientId}, #{studyId}, #{expertId}, #{expertType}, #{evaluateTime}, #{status}," +
+            " values (#{projectId}, #{patientId}, #{studyId}, #{expertId}, #{expertType}, #{evaluateTime}, #{status}," +
             "#{validStatus}, #{targetFocus}, #{nonTargetFocus}, #{newFocus}, #{supplementary}, #{report})")
+    @Results({
+            @Result(column="id", property="id"),
+            @Result(column="project_id", property = "projectId"),
+            @Result(column="patient_id", property = "patientId"),
+            @Result(column="study_id", property = "studyId" ),
+            @Result(column="expert_id", property = "expertId"),
+            @Result(column="expert_type", property = "expertType"),
+            @Result(column="evaluate_time", property = "evaluateTime"),
+            @Result(column="status", property = "status" ),
+            @Result(column="valid_status", property = "validStatus"),
+            @Result(column="target_focus", property = "targetFocus"),
+            @Result(column = "non_target_focus", property = "nonTargetFocus"),
+            @Result(column = "new_focus", property = "newFocus"),
+            @Result(column="supplementary", property="supplementary"),
+            @Result(column="report",property = "report")
+    })
     int save(ExpertEvaluation expertEvaluation);
 
     @Update("<script>" +
@@ -103,22 +119,6 @@ public interface ExpertEvaluationMapper {
             "</set>" +
             " where id = #{id}" +
             "</script>")
-    @Results({
-            @Result(column="id", property="id"),
-            @Result(column="project_id", property = "projectId"),
-            @Result(column="patient_id", property = "patientId"),
-            @Result(column="study_id", property = "studyId" ),
-            @Result(column="expert_id", property = "expertId"),
-            @Result(column="expert_type", property = "expertType"),
-            @Result(column="evaluate_time", property = "evaluateTime"),
-            @Result(column="status", property = "status" ),
-            @Result(column="valid_status", property = "validStatus"),
-            @Result(column="target_focus", property = "targetFocus"),
-            @Result(column = "non_target_focus", property = "nonTargetFocus"),
-            @Result(column = "new_focus", property = "newFocus"),
-            @Result(column="supplementary", property="supplementary"),
-            @Result(column="report",property = "report")
-    })
     int update(ExpertEvaluation expertEvaluation);
 
 }
